@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AldanaL3D — Impresiones 3D de Alta Precisión</title>
+  
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Archivo CSS Personalizado -->
+  <link rel="stylesheet" href="primer.css">
+</head>
+<body>
+
+  <!-- Encabezado / Navegación -->
+  <header>
+    <div class="logo-container">
+      <a href="#inicio" class="logo-link">
+        <img src="logo/WhatsApp Image 2026-10-05 at 3.32.25 PM.jpeg" alt="Logo AldanaL3D" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        
+      </a>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#que-es-3d">¿Qué es 3D?</a></li>
+        <li><a href="#productos">Catálogo</a></li>
+        <li><a href="#sobre-mi">Sobre Mí</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <button class="cart-icon-btn" onclick="toggleCart()" aria-label="Ver Carrito">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span id="cart-count" class="cart-badge">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="inicio" class="hero">
+    <div class="hero-content">
+      <span class="hero-tag"><i class="fa-solid fa-cube"></i> Impresión 3D Profesional</span>
+      <h1>Transformamos tus ideas en <span class="text-gradient">realidad 3D</span></h1>
+      <p>Diseños exclusivos, piezas mecánicas, figuras coleccionables y accesorios personalizados fabricados con la máxima precisión.</p>
+      <div class="hero-buttons">
+        <a href="#productos" class="btn-primary"><i class="fa-solid fa-store"></i> Ver Catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: ¿Qué es una Impresión 3D y su Máquina? -->
+  <section id="que-es-3d" class="contenedor">
+    <div class="section-header">
+      <h2>¿Qué es una Máquina de Impresión 3D?</h2>
+      <p>Conocé cómo la tecnología de fabricación aditiva cobra vida</p>
+    </div>
+    
+    <div class="custom-container" style="max-width: 900px; text-align: left; margin: 0 auto; background: var(--bg-card); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color);">
+      <p style="text-align: left; margin-bottom: 1rem;">
+        Una <strong>máquina de impresión 3D</strong> (o impresora 3D) es un equipo de manufactura aditiva capaz de crear objetos físicos tridimensionales a partir de un diseño digital en computadora (archivo STL u OBJ). 
+      </p>
+      <p style="text-align: left; margin-bottom: 1rem;">
+        <strong>¿Cómo funciona?</strong> A diferencia de los métodos tradicionales donde se corta o talla un bloque de material (sustractiva), la impresora 3D construye el objeto <strong>capa por capa</strong> fundiendo filamento plástico (como PLA o PETG) a través de una boquilla caliente, derritiéndolo con precisión milimétrica hasta completar la pieza final.
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+        <div style="background: #111; padding: 1rem; border-radius: 8px; border: 1px solid #2a2a2a;">
+          <h4 style="color: var(--accent); margin-bottom: 0.4rem;"><i class="fa-solid fa-layer-group"></i> Fabricación Capa por Capa</h4>
+          <p style="font-size: 0.85rem; color: #aaa;">Cada objeto se compone de cientos o miles de capas horizontales fusionadas.</p>
+        </div>
+        <div style="background: #111; padding: 1rem; border-radius: 8px; border: 1px solid #2a2a2a;">
+          <h4 style="color: var(--accent); margin-bottom: 0.4rem;"><i class="fa-solid fa-flask"></i> Materiales Versátiles</h4>
+          <p style="font-size: 0.85rem; color: #aaa;">Utilizamos polímeros ecológicos y técnicos como PLA, PETG y TPU según la resistencia necesaria.</p>
+        </div>
+        <div style="background: #111; padding: 1rem; border-radius: 8px; border: 1px solid #2a2a2a;">
+          <h4 style="color: var(--accent); margin-bottom: 0.4rem;"><i class="fa-solid fa-wand-magic-sparkles"></i> Personalización Total</h4>
+          <p style="font-size: 0.85rem; color: #aaa;">Permite fabricar desde piezas mecánicas exactas hasta figuras artísticas y maquetas únicas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Catálogo de Productos -->
+  <section id="productos" class="contenedor">
+    <div class="section-header">
+      <h2>Nuestros Productos</h2>
+      <p>Explorá nuestras impresiones más solicitadas</p>
+    </div>
+
+    <!-- Buscador y Filtros -->
+    <div class="controls-bar">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="input-buscar" placeholder="Buscar producto..." oninput="filtrarProductos()">
+      </div>
+      <div class="categories-filter">
+        <button class="filter-btn active" onclick="filtrarCategoria('todos', this)">Todos</button>
+        <button class="filter-btn" onclick="filtrarCategoria('gaming', this)">Gaming</button>
+        <button class="filter-btn" onclick="filtrarCategoria('decoracion', this)">Decoración</button>
+        <button class="filter-btn" onclick="filtrarCategoria('llaveros', this)">Llaveros</button>
+        <button class="filter-btn" onclick="filtrarCategoria('accesorios', this)">Accesorios</button>
+      <button class="filter-btn" onclick="filtrarCategoria('vasos ', this)">vasos</button>
+       <button class="filter-btn" onclick="filtrarCategoria('juguetes', this)">juguetes</button>
+        <button class="filter-btn" onclick="filtrarCategoria('juguetes', this)">hernamientas </button>
+     
+      </div>
+    </div>
+
+    <!-- Grid de Productos -->
+    <div id="grid-productos" class="grid-productos">
+      <!-- Inyectado dinámicamente mediante JS -->
+    </div>
+  </section>
+
+  <!-- Sección: Sobre Mí -->
+  <section id="sobre-mi" class="contenedor">
+    <div class="section-header">
+      <h2>Sobre Mí</h2>
+      <p>Conocé quién está detrás de cada proyecto en AldanaL3D</p>
+    </div>
+    
+    <div class="custom-container" style="max-width: 800px; text-align: left; margin: 0 auto; background: var(--bg-card); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color);">
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        <h3 style="color: var(--accent); font-size: 1.3rem;"><i class="fa-solid fa-user-gear"></i> ¡Hola! Soy Aldana</h3>
+        <p style="color: #ccc; line-height: 1.7;">
+          Soy Analista de Sistemas y apasionada de la fabricación digital. En AldanaL3D me encargo personalmente de 
+          todo el proceso: desde la calibración milimétrica de cada impresión hasta los detalles de procesado, asegurando piezas de excelente calidad, funcionales y a tu medida.
+        </p>
+        <p style="color: #ccc; line-height: 1.7;">
+     
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Barra Flotante Inferior de Carrito -->
+  <div id="floating-cart-bar" class="floating-cart-bar" onclick="toggleCart()">
+    <div class="floating-cart-info">
+      <span><i class="fa-solid fa-basket-shopping"></i> <strong id="floating-count">0</strong> prod.</span>
+      <span class="divider">|</span>
+      <strong id="floating-total" class="price-text">$0</strong>
+    </div>
+    <button class="btn-ver-carrito">Ver Carrito <i class="fa-solid fa-arrow-right"></i></button>
+  </div>
+
+  <!-- Panel Desplegable Lateral de Carrito (Drawer) -->
+  <div id="cart-drawer" class="cart-drawer-overlay" onclick="cerrarAlClickearOverlay(event)">
+    <div class="cart-drawer-container">
+      <div class="cart-header">
+        <h3><i class="fa-solid fa-cart-shopping"></i> Tu Carrito de Compras</h3>
+        <span class="close-btn" onclick="toggleCart()">&times;</span>
+      </div>
+
+      <!-- Banner Promo -->
+      <div class="cart-promo-banner">
+        🔥 <strong>10% OFF</strong> pagando en Efectivo o Transferencia
+      </div>
+
+      <div class="cart-drawer-body">
+        <!-- Lista de Productos -->
+        <ul id="cart-items"></ul>
+
+        <!-- Formulario de Datos del Comprador -->
+        <div class="cart-body-form">
+          <h4><i class="fa-solid fa-clipboard-user"></i> Datos para la Entrega</h4>
+          
+          <label for="cliente-nombre">Nombre y Apellido *</label>
+          <input type="text" id="cliente-nombre" placeholder="Ej: María Pérez" required>
+
+          <label for="cliente-entrega">Opción de Entrega *</label>
+          <select id="cliente-entrega" onchange="calcularTotal()">
+            <option value="Retiro">Retiro en Taller / Domicilio (Gratis)</option>
+            <option value="Envio Moto">Envío en Moto / Mensajería ($2.500)</option>
+            <option value="Correo">Correo Argentino / OCA ($3.800)</option>
+          </select>
+
+          <label for="cliente-direccion">Dirección de Envío (Si aplica)</label>
+          <input type="text" id="cliente-direccion" placeholder="Calle, Número, Localidad">
+
+          <label for="metodo-pago">Método de Pago *</label>
+          <select id="metodo-pago" onchange="calcularTotal()">
+            <option value="Efectivo">Efectivo / Transferencia (10% OFF)</option>
+            <option value="Mercado Pago">Mercado Pago (Dinero en cuenta )</option>
+            
+          </select>
+
+          <!-- Badges e Info de Pago -->
+          <div class="medios-pago-container">
+            <span class="medios-pago-titulo">Tarjetas y Medios Aceptados:</span>
+            <div class="tarjetas-badges">
+              <span class="badge-card"><i class="fa-solid fa-wallet"></i> Mercado Pago</span>
+            </div>
+
+            <!-- Alias Box -->
+            <div class="alias-box">
+              <div class="alias-info">
+                <span class="alias-label">Alias Mercado Pago:</span>
+                <strong id="alias-text">ALDANA3D.MP</strong>
+              </div>
+              <button type="button" class="btn-copiar-alias" onclick="copiarAlias()">
+                <i class="fa-regular fa-copy"></i> Copiar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resumen Footer -->
+      <div class="cart-footer">
+        <div class="resumen-linea">
+          <span>Subtotal:</span>
+          <strong id="cart-subtotal">$0</strong>
+        </div>
+        <div class="resumen-linea" id="descuento-linea">
+          <span>Descuento (10% OFF):</span>
+          <strong id="cart-descuento" class="text-success">-$0</strong>
+        </div>
+        <div class="resumen-linea">
+          <span>Envío:</span>
+          <strong id="cart-envio">$0</strong>
+        </div>
+        <hr class="resumen-divider">
+        <div class="resumen-linea total">
+          <span>Total Final:</span>
+          <strong id="cart-total">$0</strong>
+        </div>
+
+        <button class="btn-primary full-width" onclick="finalizarCompra()">
+          Ver Resumen y Confirmar <i class="fa-brands fa-whatsapp"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Resumen de Pedido -->
+  <div id="modal-pedido" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-file-invoice"></i> Resumen de tu Pedido</h3>
+        <span class="close-modal" onclick="cerrarModalPedido()">&times;</span>
+      </div>
+      
+      <div class="modal-body" id="modal-detalle-contenido">
+        <!-- Inyección dinámica JS -->
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-secundario" onclick="cerrarModalPedido()">Volver</button>
+        <button class="btn-primary" onclick="enviarPedidoWhatsAppFinal()">
+          Enviar Pedido por WhatsApp <i class="fa-brands fa-whatsapp"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón Flotante WhatsApp -->
+  <a href="https://wa.me/5491124662236?text=Hola%20AldanaL3D!%20Tengo%20una%20consulta..." 
+     class="whatsapp-float" 
+     target="_blank" 
+     aria-label="Contactar por WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- Footer -->
+  <footer id="contacto">
+    <p>&copy; 2026 <strong>AldanaL3D</strong> — Impresión 3D de alta precisión[cite: 1]</p>
+    <div class="redes">
+      <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a> | 
+      <a href="https://wa.me/5491124662236" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+    </div>
+  </footer>
+
+  <!-- Archivo JavaScript Personalizado -->
+  <script src="primer.js"></script>
+</body>
+</html>
